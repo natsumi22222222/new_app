@@ -1,0 +1,36 @@
+<%= form_with model: @contact, local: true do |f| %>
+  <%= render "shared/second-header" %>
+  <div class = "form-wrap">
+    <div class = "form-header">
+      <h5 class = "form-header-text">
+        お問い合わせフォーム
+      </h5>
+    </div>
+  </div>
+  <div class = "correct-msg-box">
+    <% if @contact.errors.any? %>
+      <div id = "error_explanation">
+        <ul>
+          <% @contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        </ul>
+      </div>
+      <div class="correct-msg-main">
+        <div class="contact-form">
+          <div class="correct-text-field">
+            <%= f.label "お問い合わせ内容" %>
+            <%= f.text_area :content, placeholder: "お問い合わせ内容を入力してください", class: "form-control"%>
+          </div>
+          <div class="send-btn-contents">
+            <div class="register-btn">
+              <%= f.sudmit "送信", class: "btn btn-success" %>
+            </div>
+            <div class="register-register">
+              <%= link_to "戻る", root_path, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
